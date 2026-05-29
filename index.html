@@ -34,14 +34,13 @@ body{font-family:var(--sans);font-weight:300;background:var(--cream);color:var(-
 
 /* ── HERO ─────────────────────────────── */
 .hero{
-  min-height:100dvh;
   background:var(--hero-bg);
   position:relative;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:flex-start;
-  padding:52px 28px 100px;
+  padding:52px 28px 52px;
   overflow:hidden;
   text-align:center;
 }
@@ -126,33 +125,30 @@ body{font-family:var(--sans);font-weight:300;background:var(--cream);color:var(-
 }
 .btn-secondary:active{transform:scale(.97)}
 
-/* Locations — horizontal scroll, single line */
+/* Locations — wrapped, all visible */
 .hero-locs{
-  display:flex;flex-wrap:nowrap;
-  overflow-x:auto;scrollbar-width:none;
-  gap:0;width:100%;
-  padding:0 4px 4px;
-  justify-content:flex-start;
+  display:flex;flex-wrap:wrap;
+  justify-content:center;
+  gap:2px 0;
+  max-width:340px;
+  margin:0 auto 0;
   opacity:0;animation:up .8s var(--ease) .36s forwards;
-  -webkit-overflow-scrolling:touch;
 }
-.hero-locs::-webkit-scrollbar{display:none}
 .hero-loc{
   font-size:11px;font-weight:400;
   color:rgba(28,92,50,.55);
-  white-space:nowrap;flex-shrink:0;
-  padding:0 10px;position:relative;
+  white-space:nowrap;
+  padding:2px 9px;position:relative;
 }
 .hero-loc:not(:last-child)::after{
-  content:'·';position:absolute;right:-3px;
-  color:rgba(28,92,50,.3);
+  content:'·';position:absolute;right:-2px;
+  color:rgba(28,92,50,.28);
 }
 
-/* Scroll cue — bottom center, no overlap with CTA */
+/* Scroll cue — flows naturally below locations */
 .scroll-cue{
-  position:absolute;bottom:20px;left:0;right:0;
   display:flex;flex-direction:column;align-items:center;gap:6px;
-  cursor:pointer;
+  cursor:pointer;margin-top:32px;
   opacity:0;animation:up .8s var(--ease) .46s forwards;
 }
 .sc-txt{font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--sage)}
