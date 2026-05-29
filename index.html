@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1C3520">
+<title>Lord of Greens — Fresh Wraps, Salads &amp; Bowls · Mumbai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+:root{
+  --hero:    #1C3520;
+  --hero2:   #162A1A;
+  --forest:  #1C3520;
+  --forest2: #2D5030;
+  --sage:    #4E7D5A;
+  --sage-lt: #8DB89A;
+  --sage-xl: #E8F2EA;
+  --cream:   #F9F5EE;
+  --cream2:  #EDE8DF;
+  --warm:    #C9A96E;
+  --text:    #1A2E1C;
+  --body:    #3A5240;
+  --muted:   #6B7F6E;
+  --border:  rgba(26,46,28,.10);
+  --border2: rgba(26,46,28,.16);
+  --nveg:    #8B3A1E;
+  --serif:  'Playfair Display',Georgia,serif;
+  --sans:   'Jost',system-ui,sans-serif;
+  --ease:   cubic-bezier(.32,.72,0,1);
+  --spring: cubic-bezier(.34,1.56,.64,1);
+}
+
+body{
+  background:var(--cream);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:300;
+  min-height:100dvh;
+  overflow-x:hidden;
+  padding-bottom:80px;
+}
+
+/* Subtle film grain */
+body::after{
+  content:'';position:fixed;inset:0;z-index:900;pointer-events:none;
+  opacity:.4;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero{
+  background:var(--hero);
+  padding:56px 24px 52px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:500px;height:500px;pointer-events:none;
+  background:radial-gradient(circle,rgba(78,125,90,.14) 0%,transparent 68%);
+}
+
+.hero-logo{width:90px;display:block;margin-bottom:22px;opacity:0;animation:fadeDn .9s var(--ease) .08s forwards}
+.hero-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(46px,12vw,80px);line-height:.96;color:#E4EFE5;letter-spacing:-.025em;margin-bottom:12px;opacity:0;animation:fadeDn .9s var(--ease) .16s forwards}
+.hero-sub{font-size:10.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--sage-lt);opacity:0;margin-bottom:28px;animation:fadeDn .9s var(--ease) .24s forwards}
+.hero-rule{width:100%;max-width:300px;height:1px;margin:0 auto 26px;background:linear-gradient(to right,transparent,rgba(141,184,154,.25),transparent);opacity:0;animation:fadeDn .9s var(--ease) .28s forwards}
+
+.hero-locs{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;max-width:400px;margin-bottom:30px;opacity:0;animation:fadeDn .9s var(--ease) .32s forwards}
+.hero-loc{font-size:10px;font-weight:400;color:rgba(228,239,229,.45);background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);padding:4px 11px;border-radius:99px;letter-spacing:.04em}
+
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#E4EFE5;color:var(--forest);
+  font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  padding:14px 22px 14px 20px;border-radius:99px;
+  box-shadow:0 4px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.55);
+  transition:all .35s var(--spring);opacity:0;
+  animation:fadeDn .9s var(--ease) .4s forwards;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.55)}
+.hero-cta:active{transform:scale(.97)}
+.cta-arrow{width:28px;height:28px;background:rgba(26,46,28,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s var(--spring)}
+.hero-cta:hover .cta-arrow{transform:translate(2px,-1px)}
+
+.hero-note{font-size:10px;color:rgba(141,184,154,.4);letter-spacing:.08em;margin-top:16px;opacity:0;animation:fadeDn .9s var(--ease) .48s forwards}
+
+/* ── MARQUEE ──────────────────────────────────────── */
+.marquee-band{background:var(--forest2);overflow:hidden;border-top:1px solid rgba(78,125,90,.18);border-bottom:1px solid rgba(78,125,90,.18);padding:10px 0;user-select:none}
+.marquee-inner{display:flex;width:max-content;animation:ticker 26s linear infinite}
+.marquee-inner span{font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(228,239,229,.5);white-space:nowrap;padding:0 28px}
+.marquee-inner span b{color:var(--sage-lt);font-weight:700}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── STICKY NAV ───────────────────────────────────── */
+.nav-bar{
+  position:sticky;top:0;z-index:80;
+  background:rgba(249,245,238,.96);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  max-width:720px;margin:0 auto;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+
+.cat-btn{
+  flex-shrink:0;font-family:var(--sans);font-size:12px;font-weight:500;
+  color:var(--muted);background:none;border:none;
+  border-bottom:2.5px solid transparent;
+  padding:14px 18px 12px;cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+  transition:all .25s var(--ease);white-space:nowrap;
+}
+.cat-btn.active{color:var(--forest);border-bottom-color:var(--sage);font-weight:700}
+.cat-btn:hover:not(.active){color:var(--body)}
+.cnt{font-size:10px;font-weight:400;color:var(--muted);background:var(--cream2);padding:1px 6px;border-radius:99px;transition:all .25s var(--ease)}
+.cat-btn.active .cnt{background:var(--sage-xl);color:var(--sage)}
+
+/* ── MENU MAIN ────────────────────────────────────── */
+.menu{max-width:720px;margin:0 auto;padding-bottom:24px}
+.cat-section{display:none}
+.cat-section.active{display:block}
+
+/* Veg legend */
+.legend{
+  display:flex;align-items:center;gap:18px;
+  padding:9px 24px;
+  border-bottom:1px solid var(--border);
+  background:var(--cream);
+}
+.lg-item{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:400;color:var(--muted);letter-spacing:.04em}
+.lg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* Category title */
+.cat-header{position:relative;overflow:hidden;padding:36px 24px 20px}
+.cat-ghost{
+  position:absolute;top:4px;left:8px;
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(88px,20vw,140px);
+  color:var(--text);opacity:.026;line-height:1;pointer-events:none;
+  user-select:none;white-space:nowrap;letter-spacing:-.04em;
+}
+.cat-eyebrow{font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--sage);margin-bottom:5px}
+.cat-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(40px,10vw,58px);color:var(--forest);line-height:1;letter-spacing:-.025em;margin-bottom:5px}
+.cat-note{font-size:10.5px;font-weight:300;color:var(--muted);letter-spacing:.06em}
+
+/* Sub-section header */
+.sub-hd{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 24px;
+  background:var(--cream2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.sub-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.sub-dot.veg{background:var(--sage)}
+.sub-dot.nveg{background:var(--nveg)}
+.sub-txt{font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+/* Item rows */
+.item-list{padding:0 24px}
+
+.item-row{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:17px 0;
+  border-bottom:1px solid var(--border);
+  opacity:0;transform:translateY(8px);
+  transition:background .2s var(--ease);
+}
+.item-row.in{opacity:1;transform:none;transition:opacity .48s var(--ease),transform .48s var(--ease),background .2s var(--ease)}
+.item-row:last-child{border-bottom:none}
+
+.type-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0;margin-top:5px}
+.type-sq.veg{background:var(--sage)}
+.type-sq.nveg{background:var(--nveg)}
+
+.item-body{flex:1;min-width:0}
+.item-top{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:3px}
+.item-name{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--text);line-height:1.2;letter-spacing:-.01em}
+.item-desc{font-size:11.5px;font-weight:300;color:var(--muted);line-height:1.55;letter-spacing:.01em}
+
+.badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:2px 7px;border-radius:99px;flex-shrink:0;white-space:nowrap}
+.b-pop{background:rgba(201,169,110,.14);color:#7A5C2A;border:1px solid rgba(201,169,110,.28)}
+.b-new{background:rgba(78,125,90,.12);color:var(--sage);border:1px solid rgba(78,125,90,.24)}
+
+.item-price{flex-shrink:0;padding-top:2px;text-align:right}
+.item-price .amt{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--forest);letter-spacing:-.02em}
+.item-price .sym{font-size:10.5px;font-weight:400;opacity:.55;margin-right:1px}
+
+.sec-end{height:14px;background:var(--cream2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:6px}
+
+/* ── STICKY BOTTOM CTA ────────────────────────────── */
+.sticky-cta{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  padding:10px 20px max(10px,env(safe-area-inset-bottom));
+  background:linear-gradient(to top,rgba(249,245,238,1) 65%,rgba(249,245,238,0));
+}
+.order-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;max-width:500px;margin:0 auto;
+  background:var(--forest);color:#E4EFE5;
+  font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  padding:16px 24px;border-radius:99px;
+  box-shadow:0 4px 28px rgba(26,46,28,.24),0 1px 4px rgba(26,46,28,.16);
+  transition:all .3s var(--spring);
+}
+.order-btn:hover{background:var(--forest2);transform:translateY(-1px)}
+.order-btn:active{transform:scale(.97)}
+.o-icon{width:28px;height:28px;background:rgba(228,239,229,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s var(--spring)}
+.order-btn:hover .o-icon{transform:translate(2px,-1px)}
+
+/* ── FOOTER ───────────────────────────────────────── */
+.footer{background:var(--hero);padding:48px 24px 44px;text-align:center}
+.ft-logo{width:40px;margin:0 auto 8px;opacity:.85}
+.ft-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;color:#C8DEC9;letter-spacing:-.02em;margin-bottom:4px}
+.ft-sub{font-size:9.5px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(141,184,154,.35);margin-bottom:24px}
+.ft-tel{display:block;font-size:13px;font-weight:500;color:rgba(200,222,201,.6);letter-spacing:.05em;text-decoration:none;margin-bottom:20px;transition:color .2s}
+.ft-tel:hover{color:#C8DEC9}
+.ft-locs{display:flex;flex-wrap:wrap;justify-content:center;max-width:350px;margin:0 auto 20px;gap:0}
+.fl{font-size:10.5px;font-weight:300;color:rgba(141,184,154,.35);padding:0 7px;position:relative}
+.fl:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:9px;background:rgba(141,184,154,.18)}
+.ft-ig{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(141,184,154,.32);text-decoration:none;transition:color .2s}
+.ft-ig:hover{color:rgba(200,222,201,.65)}
+
+/* ── ANIMATIONS ───────────────────────────────────── */
+@keyframes fadeDn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media(min-width:560px){
+  .hero{padding:68px 40px 60px}
+  .cat-header{padding:40px 40px 22px}
+  .sub-hd,.legend,.item-list{padding-left:40px;padding-right:40px}
+}
+@media(min-width:720px){
+  .sticky-cta{display:none}
+  body{padding-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ────────── HERO ────────────────────────────────── -->
+<header class="hero">
+  <!-- Crown logo SVG (light on dark) -->
+  <svg class="hero-logo" viewBox="0 0 240 215" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lord of Greens">
+    <path d="M120 15 C142 52 142 90 120 112 C98 90 98 52 120 15Z" fill="#C8DEC9"/>
+    <path d="M120 24 Q116 68 122 108" stroke="rgba(22,42,26,.22)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <g transform="rotate(-38,78,112)">
+      <path d="M78 40 C100 64 100 94 78 112 C56 94 56 64 78 40Z" fill="#C8DEC9"/>
+      <path d="M78 49 Q74 80 79 108" stroke="rgba(22,42,26,.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </g>
+    <g transform="rotate(38,162,112)">
+      <path d="M162 40 C184 64 184 94 162 112 C140 94 140 64 162 40Z" fill="#C8DEC9"/>
+      <path d="M162 49 Q158 80 163 108" stroke="rgba(22,42,26,.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </g>
+    <path d="M30 110 L210 110 L210 160 L183 160 L183 140 L159 140 L159 160 L133 160 L133 140 L107 140 L107 160 L81 160 L81 140 L57 140 L57 160 L30 160 Z" fill="#C8DEC9"/>
+    <line x1="32" y1="118" x2="208" y2="118" stroke="rgba(22,42,26,.1)" stroke-width="1"/>
+    <circle cx="96"  cy="110" r="4.5" fill="#C8DEC9"/>
+    <circle cx="144" cy="110" r="4.5" fill="#C8DEC9"/>
+    <text x="120" y="196" font-family="Playfair Display,Georgia,serif" font-style="italic" font-size="28" font-weight="400" fill="#C8DEC9" text-anchor="middle" letter-spacing="-.3">Lord of Greens</text>
+    <text x="120" y="210" font-family="Jost,system-ui,sans-serif" font-size="7" font-weight="400" fill="rgba(141,184,154,.5)" text-anchor="middle" letter-spacing="3">WRAPS · SALADS · BOWLS</text>
+  </svg>
+
+  <h1 class="hero-name">Lord of Greens</h1>
+  <p class="hero-sub">Wraps &nbsp;·&nbsp; Salads &nbsp;·&nbsp; Bowls &nbsp;·&nbsp; Sandos</p>
+  <div class="hero-rule"></div>
+
+  <div class="hero-locs">
+    <span class="hero-loc">Mira Road</span>
+    <span class="hero-loc">Dahisar</span>
+    <span class="hero-loc">Borivali</span>
+    <span class="hero-loc">Kandivali</span>
+    <span class="hero-loc">Malad</span>
+    <span class="hero-loc">Goregaon</span>
+    <span class="hero-loc">Jogeshwari</span>
+    <span class="hero-loc">Andheri</span>
+  </div>
+
+  <a href="https://wa.me/917977354515" class="hero-cta" target="_blank" rel="noopener">
+    <span>Order on WhatsApp</span>
+    <span class="cta-arrow">
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </a>
+  <p class="hero-note">Cloud kitchen &nbsp;·&nbsp; Call or WhatsApp 7977354515</p>
+</header>
+
+<!-- ────────── MARQUEE ─────────────────────────────── -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Fresh Daily &nbsp;·&nbsp; <b>Made to Order</b> &nbsp;·&nbsp; Delivered Hot &nbsp;·&nbsp; <b>Mumbai Cloud Kitchen</b> &nbsp;·&nbsp; 100% Fresh Ingredients &nbsp;·&nbsp; <b>No Junk. Just Good Food.</b> &nbsp;·&nbsp; Honest Food &nbsp;·&nbsp; <b>Made with Care</b> &nbsp;·&nbsp; </span>
+    <span>Fresh Daily &nbsp;·&nbsp; <b>Made to Order</b> &nbsp;·&nbsp; Delivered Hot &nbsp;·&nbsp; <b>Mumbai Cloud Kitchen</b> &nbsp;·&nbsp; 100% Fresh Ingredients &nbsp;·&nbsp; <b>No Junk. Just Good Food.</b> &nbsp;·&nbsp; Honest Food &nbsp;·&nbsp; <b>Made with Care</b> &nbsp;·&nbsp; </span>
+  </div>
+</div>
+
+<!-- ────────── NAV ─────────────────────────────────── -->
+<nav class="nav-bar" id="nav-bar">
+  <div class="nav-inner">
+    <button class="cat-btn active" data-cat="wraps">Wraps <span class="cnt">8</span></button>
+    <button class="cat-btn" data-cat="salads">Salads <span class="cnt">7</span></button>
+    <button class="cat-btn" data-cat="bowls">Bowls <span class="cnt">2</span></button>
+    <button class="cat-btn" data-cat="sandos">Sandos <span class="cnt">1</span></button>
+  </div>
+</nav>
+
+<!-- ────────── MENU ────────────────────────────────── -->
+<main class="menu">
+
+  <!-- Veg / Non-veg legend -->
+  <div class="legend">
+    <div class="lg-item"><div class="lg-dot" style="background:var(--sage)"></div><span>Vegetarian</span></div>
+    <div class="lg-item"><div class="lg-dot" style="background:var(--nveg)"></div><span>Non-Vegetarian</span></div>
+  </div>
+
+  <!-- ══ WRAPS ══════════════════════════════════════ -->
+  <section class="cat-section active" id="wraps">
+    <div class="cat-header">
+      <div class="cat-ghost" aria-hidden="true">Wraps</div>
+      <p class="cat-eyebrow">Handcrafted Daily</p>
+      <h2 class="cat-title">Wraps</h2>
+      <p class="cat-note">fresh · made to order · packed with flavour</p>
+    </div>
+
+    <div class="sub-hd"><div class="sub-dot veg"></div><span class="sub-txt">Vegetarian</span></div>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Chipotle Paneer</span><span class="badge b-pop">Top Pick</span></div>
+          <p class="item-desc">smoky chipotle paneer · crunchy lettuce · fresh veggies · in-house chipotle sauce</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">129</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Tandoori Paneer</span></div>
+          <p class="item-desc">juicy tandoori paneer · crisp greens · avocado crema</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">139</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Falafel &amp; Hummus</span></div>
+          <p class="item-desc">crispy golden falafel · smooth hummus · garlic yogurt sauce</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">129</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Falafel &amp; Tzatziki</span></div>
+          <p class="item-desc">crunchy falafel · fresh vegetables · cool creamy tzatziki</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">129</span></div>
+      </div>
+    </div>
+
+    <div class="sub-hd"><div class="sub-dot nveg"></div><span class="sub-txt">Non-Vegetarian</span></div>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Chipotle Chicken</span></div>
+          <p class="item-desc">chipotle-marinated chicken · fresh veggies · smoky chipotle sauce</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">149</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Tandoori Chicken</span><span class="badge b-pop">Top Pick</span></div>
+          <p class="item-desc">succulent tandoori chicken · crisp greens · creamy avocado crema</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">159</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Pepper Chicken &amp; Hummus</span></div>
+          <p class="item-desc">tender pepper chicken · creamy hummus · garlic yogurt · crunchy veggies</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">149</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Grilled Chicken &amp; Tzatziki</span></div>
+          <p class="item-desc">greek-style grilled chicken · fresh veggies · cool tangy tzatziki</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">149</span></div>
+      </div>
+    </div>
+    <div class="sec-end"></div>
+  </section>
+
+  <!-- ══ SALADS ═════════════════════════════════════ -->
+  <section class="cat-section" id="salads">
+    <div class="cat-header">
+      <div class="cat-ghost" aria-hidden="true">Salads</div>
+      <p class="cat-eyebrow">Fresh &amp; Vibrant</p>
+      <h2 class="cat-title">Salads</h2>
+      <p class="cat-note">bold · wholesome · packed with nutrients</p>
+    </div>
+
+    <div class="sub-hd"><div class="sub-dot veg"></div><span class="sub-txt">Vegetarian</span></div>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Greek Salad</span></div>
+          <p class="item-desc">marinated chickpeas · feta cheese · tomatoes · cucumbers · bell peppers · basil oil</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">169</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Veg Mexican</span><span class="badge b-pop">Top Pick</span></div>
+          <p class="item-desc">chipotle paneer · bell peppers · cucumbers · salsa · cheese · chipotle sauce</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">189</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Veg Caesar</span></div>
+          <p class="item-desc">pepper paneer · cherry tomatoes · croutons · cheese · creamy caesar dressing</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">189</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Tandoori Paneer Salad</span></div>
+          <p class="item-desc">smoky tandoori · pickled onions · bell peppers · avocado crema</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">189</span></div>
+      </div>
+    </div>
+
+    <div class="sub-hd"><div class="sub-dot nveg"></div><span class="sub-txt">Non-Vegetarian</span></div>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Chicken Mexican</span></div>
+          <p class="item-desc">chipotle chicken · bell peppers · cucumbers · salsa · chipotle dressing</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">199</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Chicken Caesar</span></div>
+          <p class="item-desc">pepper chicken · cherry tomatoes · croutons · cheese · caesar dressing</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">199</span></div>
+      </div>
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Tandoori Chicken Salad</span><span class="badge b-pop">Top Pick</span></div>
+          <p class="item-desc">flavourful tandoori · pickled onions · bell peppers · avocado crema</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">199</span></div>
+      </div>
+    </div>
+    <div class="sec-end"></div>
+  </section>
+
+  <!-- ══ BOWLS ══════════════════════════════════════ -->
+  <section class="cat-section" id="bowls">
+    <div class="cat-header">
+      <div class="cat-ghost" aria-hidden="true">Bowls</div>
+      <p class="cat-eyebrow">Hearty &amp; Layered</p>
+      <h2 class="cat-title">Bowls</h2>
+      <p class="cat-note">herb rice · fully loaded · deeply satisfying</p>
+    </div>
+
+    <div class="sub-hd"><div class="sub-dot veg"></div><span class="sub-txt">Vegetarian</span></div>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Veg Burrito Bowl</span></div>
+          <p class="item-desc">fragrant herb rice · chipotle paneer · rajma-corn salad · lettuce · salsa · chipotle sauce</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">209</span></div>
+      </div>
+    </div>
+
+    <div class="sub-hd"><div class="sub-dot nveg"></div><span class="sub-txt">Non-Vegetarian</span></div>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="type-sq nveg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Chicken Burrito Bowl</span><span class="badge b-pop">Top Pick</span></div>
+          <p class="item-desc">fragrant herb rice · chipotle chicken · rajma-corn salad · lettuce · salsa · chipotle sauce</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">219</span></div>
+      </div>
+    </div>
+    <div class="sec-end"></div>
+  </section>
+
+  <!-- ══ SANDOS ═════════════════════════════════════ -->
+  <section class="cat-section" id="sandos">
+    <div class="cat-header">
+      <div class="cat-ghost" aria-hidden="true">Sandos</div>
+      <p class="cat-eyebrow">Crispy &amp; Bold</p>
+      <h2 class="cat-title">Sandos</h2>
+      <p class="cat-note">crispy · flavour-packed · made fresh daily</p>
+    </div>
+
+    <div class="sub-hd"><div class="sub-dot veg"></div><span class="sub-txt">Vegetarian</span></div>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="type-sq veg"></div>
+        <div class="item-body">
+          <div class="item-top"><span class="item-name">Aubergine Pesto Sando</span><span class="badge b-new">New</span></div>
+          <p class="item-desc">crispy aubergine · flavourful in-house pesto · fresh veggies · soft sando</p>
+        </div>
+        <div class="item-price"><span class="sym">₹</span><span class="amt">169</span></div>
+      </div>
+    </div>
+    <div class="sec-end"></div>
+  </section>
+
+</main>
+
+<!-- ────────── FOOTER ─────────────────────────────── -->
+<footer class="footer">
+  <svg class="ft-logo" viewBox="0 0 240 165" fill="none" aria-hidden="true">
+    <path d="M120 15 C142 52 142 90 120 112 C98 90 98 52 120 15Z" fill="#8DB89A"/>
+    <g transform="rotate(-38,78,112)"><path d="M78 40 C100 64 100 94 78 112 C56 94 56 64 78 40Z" fill="#8DB89A"/></g>
+    <g transform="rotate(38,162,112)"><path d="M162 40 C184 64 184 94 162 112 C140 94 140 64 162 40Z" fill="#8DB89A"/></g>
+    <path d="M30 110 L210 110 L210 160 L183 160 L183 140 L159 140 L159 160 L133 160 L133 140 L107 140 L107 160 L81 160 L81 140 L57 140 L57 160 L30 160 Z" fill="#8DB89A"/>
+    <circle cx="96" cy="110" r="4.5" fill="#8DB89A"/>
+    <circle cx="144" cy="110" r="4.5" fill="#8DB89A"/>
+  </svg>
+  <div class="ft-name">Lord of Greens</div>
+  <p class="ft-sub">Wraps · Salads · Bowls · Sandos</p>
+  <a href="tel:7977354515" class="ft-tel">7977354515</a>
+  <div class="ft-locs">
+    <span class="fl">Mira Road</span><span class="fl">Dahisar</span><span class="fl">Borivali</span><span class="fl">Kandivali</span>
+    <span class="fl">Malad</span><span class="fl">Goregaon</span><span class="fl">Jogeshwari</span><span class="fl">Andheri</span>
+  </div>
+  <a href="https://instagram.com/lordofthegreenss" class="ft-ig" target="_blank" rel="noopener">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @lordofthegreenss
+  </a>
+</footer>
+
+<!-- ────────── STICKY CTA ─────────────────────────── -->
+<div class="sticky-cta">
+  <a href="https://wa.me/917977354515" class="order-btn" target="_blank" rel="noopener">
+    <span>Order on WhatsApp</span>
+    <span class="o-icon">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </span>
+  </a>
+</div>
+
+<script>
+// Tab switching
+const btns = document.querySelectorAll('.cat-btn');
+const secs  = document.querySelectorAll('.cat-section');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.cat;
+    btns.forEach(b => b.classList.remove('active'));
+    secs.forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    const sec = document.getElementById(id);
+    sec.classList.add('active');
+    // Scroll to content, below sticky nav
+    const heroH = document.querySelector('.hero').offsetHeight;
+    const mH    = document.querySelector('.marquee-band').offsetHeight;
+    window.scrollTo({ top: heroH + mH, behavior: 'smooth' });
+    resetReveal(sec);
+  });
+});
+
+// Scroll reveal
+function resetReveal(container) {
+  const rows = container.querySelectorAll('.item-row');
+  rows.forEach(r => r.classList.remove('in'));
+  requestAnimationFrame(() => revealRows(container));
+}
+
+function revealRows(container) {
+  const rows = container.querySelectorAll('.item-row:not(.in)');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = parseInt(e.target.dataset.i || 0);
+        setTimeout(() => e.target.classList.add('in'), i * 42);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  rows.forEach((r, i) => { r.dataset.i = i; io.observe(r); });
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  const active = document.querySelector('.cat-section.active');
+  if (active) revealRows(active);
+});
+</script>
+</body>
+</html>
